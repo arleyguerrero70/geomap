@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mápa de calor</title>
+</head>
+<body>
+    <h1>Mápa de calor</h1>
+    <div id="map" class="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmOG7ymrSkqTTu8rtXPQVrdmjOXIc6Nzo"></script>
+    <script>
+        const $map = document.querySelector('#map')
+        new window.google.maps.Map($map,{
+            center: {
+                lat:0,
+                lng:0,
+            },
+            zoom: 3
+        })
+    </script>
+    
+</body>
+</html>
