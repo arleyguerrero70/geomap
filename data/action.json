@@ -14,6 +14,39 @@
       "confirmed": 321,
       "deaths": 123,
       "recovered": 123456
-    }
+    },
+    {
+        "provincestate": "Sprinfield",
+        "countryregion": "Compumundohipermegared",
+        "lastupdate": "2020-11-05",
+        "location": {
+          "lat": 37.782,
+          "lng": 122.445
+        },
+        "countrycode": {
+          "iso2": "SP",
+          "iso3": "SPF"
+        },
+        "confirmed": 321,
+        "deaths": 123,
+        "recovered": 123456
+    },
+    {
+        "provincestate": "Sprinfield",
+        "countryregion": "Compumundohipermegared",
+        "lastupdate": "2020-11-05",
+        "location": {
+          "lat": 37.782,
+          "lng": 122.443
+        },
+        "countrycode": {
+          "iso2": "SP",
+          "iso3": "SPF"
+        },
+        "confirmed": 321,
+        "deaths": 123,
+        "recovered": 123456
+    }  
+      
     
   ]
