@@ -42,17 +42,19 @@
             const data = await getData()
             console.log(data)
             data.forEach(item => {
-                const marker = new window.google.maps.Marker({
-                    position: {
-                        lat: item.location.lat,
-                        lng: item.location.lng,
-                    },
-                    map
-                }) 
-                marker.addListener('click', () =>{
-                    popup.setContent(renderExtraData(item))
-                    popup.open(map, marker)
-                })               
+                if (item.recovered > 0){
+                    const marker = new window.google.maps.Marker({
+                        position: {
+                            lat: item.location.lat,
+                            lng: item.location.lng,
+                        },
+                        map
+                    }) 
+                    marker.addListener('click', () =>{
+                        popup.setContent(renderExtraData(item))
+                        popup.open(map, marker)
+                    }) 
+                }                  
                 
             })               
         }
