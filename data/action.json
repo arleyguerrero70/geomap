@@ -1,0 +1,19 @@
+[
+    {
+      "provincestate": "Sprinfield",
+      "countryregion": "Compumundohipermegared",
+      "lastupdate": "2020-11-05",
+      "location": {
+        "lat": 33.93911,
+        "lng": 67.709953
+      },
+      "countrycode": {
+        "iso2": "SP",
+        "iso3": "SPF"
+      },
+      "confirmed": 321,
+      "deaths": 123,
+      "recovered": 123456
+    }
+    
+  ]
