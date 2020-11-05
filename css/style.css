@@ -11,3 +11,7 @@ h1{
     margin: 15px;
     text-align: center;
 }
+.map div p:nth-child(-n+1) {
+    font-weight: 500;
+    color: black;
+}
