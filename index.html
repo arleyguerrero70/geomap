@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <title>Mápa de calor</title>
 </head>
 <body>
     <h1>Mápa de calor</h1>
     <div id="map" class="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmOG7ymrSkqTTu8rtXPQVrdmjOXIc6Nzo"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmOG7ymrSkqTTu8rtXPQVrdmjOXIc6Nzo&libraries=visualization"></script>
     <script>
         const $map = document.querySelector('#map')
         const map = new window.google.maps.Map($map, {
@@ -18,26 +19,28 @@
                 lat: 0,
                 lng: 0,
             },
-            zoom: 3
+            zoom: 2,
+            mapTypeId: "satellite"
         })
+
         renderData()
         async function getData() {
-            const response = await fetch('https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest')
+            const response = await fetch('https://raw.githubusercontent.com/arleyguerrero70/geomap/master/data/action.json')
             const data = await response.json()
             return data
         }  
         const popup = new window.google.maps.InfoWindow()
 
         function renderExtraData({ confirmed, deaths, recovered, provincestate, countryregion }){
-            return `
+            return (`
             <div>
-                <p><b>${provincestate} - ${countryregion}</b></p>
+                <p><strong> ${provincestate} <br> ${countryregion}</strong></p>
                 <p><b>Confirmados: ${confirmed}</b></p>
                 <p><b>Muertes: ${deaths}</b></p>
                 <p><b>Recuperados: ${recovered}</b></p>
             </div>
             `
-        }
+            )}
         async function renderData() {
             const data = await getData()
             console.log(data)
@@ -48,7 +51,7 @@
                             lat: item.location.lat,
                             lng: item.location.lng,
                         },
-                        map
+                        map,
                     }) 
                     marker.addListener('click', () =>{
                         popup.setContent(renderExtraData(item))
@@ -58,6 +61,27 @@
                 
             })               
         }
+        var heatmapData = [
+            new google.maps.LatLng(37.782, -122.447),
+            new google.maps.LatLng(37.782, -122.445),
+            new google.maps.LatLng(37.782, -122.443),
+            new google.maps.LatLng(37.782, -122.441),
+            new google.maps.LatLng(37.782, -122.439),
+            new google.maps.LatLng(37.782, -122.437),
+            new google.maps.LatLng(37.782, -122.435),
+            new google.maps.LatLng(37.785, -122.447),
+            new google.maps.LatLng(37.785, -122.445),
+            new google.maps.LatLng(37.785, -122.443),
+            new google.maps.LatLng(37.785, -122.441),
+            new google.maps.LatLng(37.785, -122.439),
+            new google.maps.LatLng(37.785, -122.437),
+            new google.maps.LatLng(37.785, -122.435)
+        ];
+
+var heatmap = new google.maps.visualization.HeatmapLayer({
+  data: heatmapData
+});
+heatmap.setMap(map);
     </script>
     
 </body>
